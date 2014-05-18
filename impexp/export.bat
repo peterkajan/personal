@@ -1,0 +1,2 @@
+set PYTHONPATH=.
+appcfg.py download_data --config_file=exporter.py --filename=../data/data_export.csv --kind=Guest --url=http://htcinvite.appspot.com/_ah/remote_api --application=s~htcinvite "/Users/pkajan/Documents/Aptana Studio 3 Workspace/postovabanka/"

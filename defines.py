@@ -1,104 +1,37 @@
 # -*- coding: utf-8 -*-
-MAIL_FROM = 'union@branda.sk'
-MAIL_SUBJECT = u'Noc filmových hviezd UNION'
+DOMAIN = 'http://www.htc-one-m8.sk/'
+PAGE_FLOW_2 = True
 
-MAIL_TEXT = u"""
-Ďakujeme za vyplnenie dotazníku, a zároveň potvrdzujeme zaregistrovanie Vašich údajov do databázy potvrdených účastníkov na vianočný večierok – Noc filmových hviezd UNION.
-
-Na základe Vašich odpovedí Vám bola vygenerovaná maska %(fig)s. 
-Budeme veľmi radi, ak prídete na vianočný večierok v tejto maske, filmový dress code ale nie je povinný. 
-
-Pripomíname, že vianočný večierok sa koná dňa 20.12.2013 o 19:00 v bratislavskom hoteli Crowne Plaza.
-
-Vaše registračné údaje si môžete skontrolovať tu:
-
-Krstné meno: %(fn)s
-Priezvisko: %(ln)s
-Zamestnávatel: %(emp)s
-Vaše Pracovisko: %(wrk)s
-Ubytovanie v hoteli Crowne Plaza: %(acc)s
-Váš preferovaný spolubývajúci: %(rmt)s
-Adresa Vášho trvalého bydliska: %(res)s
-
-V prípade akýchkoľvek nejasností, kontaktujte prosím organizačný tím na e-mailovej adrese union@branda.sk.
+MAIL_FROM = 'pozvanka@htc-one-m8.sk'
+MAIL_INVITATION_SUBJECT = u'Pozvánka na predstavenie HTC One (M8)'
+MAIL_INVITATION_TEXT = u"""
+Dobrý deň, {name},
+pozývame Vás na slávnostné predstavenie nového HTC One (M8), ktoré sa uskutoční v utorok 29. apríla 2014 v reštaurácii Flow McRoy Lounge Eurovea. Začíname o 19:00.
+RSVP: {link}
+Pozvánka platí pre jednu osobu.
+Prosíme o potvrdenie Vašej účati najneskôr do 25. apríla 2014. 
+Ďakujeme.
+Vaše HTC
 """
 
-ERROR_EMAIL_INVALID = u'Zadali ste nesprávny email'
-ERROR_EMAIL_EXIST = u'Zadaný email bol už použitý'
-ERROR_NOT_ENTERED = u'Zabudli ste vyplniť pole %s'
+MAIL_CONFIRMATION_SUBJECT = u'Potvrdenie účasti na predstavení HTC One (M8)'
+MAIL_CONFIRMATION_TEXT = u"""
+Dobrý deň, {name},
+ďakujeme za potvrdenie Vašej účasti na predstavení nového HTC One (M8). 
+Tešíme sa na Vás v utorok 29. apríla v reštaurácii Flow McRoy Lounge Eurovea o 19:00.
+S pozdravom,
+Vaše HTC
+"""
 
-ERROR_NOT_ENTERED_GENDER = u'Prosím uveďte vaše pohlavie'
+MAIL_REJECTION = True
+MAIL_REJECTION_SUBJECT = u'Odmientutie účasti na predstavení HTC One (M8)'
+MAIL_REJECTION_TEXT = u"""
+Dobrý deň, {name},
+ďakujeme za Váš čas. Je nám lúto, že sa našej akcie nezúčastníte.
+Vaš rozhodnutie môžete do piatku 25. apríla zmeniť prostredníctvom: {link} :).
+Ďakujeme.
+S pozdravom,
+Vaše HTC
+"""
 
-cities = {
-  'BB': u'Banská Bystrica',
-  'BD': u'Bardejov',
-  'BA': u'Bratislava ',
-  'BR': u'Brezno',
-  'DK': u'Dolný Kubín',
-  'DS': u'Dunajská Streda',
-  'GL': u'Galanta',
-  'HU': u'Humenné',
-  'KO': u'Komárno',
-  'KE': u'Košice',
-  'LE': u'Levice',
-  'LM': u'Liptovský Mikuláš',
-  'LC': u'Lučenec',
-  'MA': u'Malacky',
-  'MT': u'Martin',
-  'MI': u'Michalovce',
-  'NT': u'Nitra',
-  'NZ': u'Nové Zámky',
-  'PN': u'Pieštany',
-  'PP': u'Poprad',
-  'PO': u'Prešov',
-  'PD': u'Prievidza',
-  'RS': u'Rimavská Sobota',
-  'RO': u'Rožnava',
-  'RK': u'Ružomberok',
-  'SE': u'Senica',
-  'SN': u'Snina',
-  'SP': u'Spišská Nová Ves',
-  'TO': u'Topolčany',
-  'TV': u'Trebišov',
-  'TN': u'Trenčín',
-  'TT': u'Trnava',
-  'VK': u'Velký Krtíš',
-  'VT': u'Vranov nad Toplou',
-  'ZV': u'Zvolen',
-  'ZH': u'Žiar nad Hronom',
-  'ZA': u'Žilina',   
-}
 
-citiesWithAcc = [
-  'BB', 
-  'BD', 
-  'BR', 
-  'DK', 
-  'HU', 
-  'KO', 
-  'KE', 
-  'LE', 
-  'LM', 
-  'LC', 
-  'MT', 
-  'MI', 
-  'NT', 
-  'NZ', 
-  'PP', 
-  'PO', 
-  'PD', 
-  'RS', 
-  'RO', 
-  'RK', 
-  'SE',
-  'SN', 
-  'SP', 
-  'TO', 
-  'TV', 
-  'TN', 
-  'VK', 
-  'VT', 
-  'ZV', 
-  'ZH', 
-  'ZA', 
-]

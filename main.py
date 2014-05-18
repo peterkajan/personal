@@ -1,114 +1,193 @@
-﻿from defines import *
+﻿import defines
 from django.conf import settings
-from forms import Page1Form
 from google.appengine.api import mail
 from google.appengine.ext.webapp import template
 from utils import BaseHandler, sessionConfig
 import logging
 import os
 import webapp2
+from model import Guest, persistTestGuests
+from google.appengine.ext import ndb
+from google.appengine.runtime import DeadlineExceededError
+from django.template.loader import render_to_string
+from urllib import urlencode
 
 
-settings.configure()
+if not settings.configured:
+    settings.configure()
 settings.USE_I18N = False
+settings.TEMPLATE_DIRS = ('.')
+settings.TEMPLATE_DEBUG = True
 
+URL_MAIN='/'
+URL_CONFIRMATION_ACCEPT='/potvdrdenie'
+URL_CONFIRMATION_REJECT='/jenamtoluto'
+URL_ACCEPT='/accept'
+URL_REJECT='/reject'
+
+#admin interface
+URL_PAGE_SENDER='/send_mails_secret'
+URL_PAGE_TEST_DATA_IMPORT='/import_secret'
     
-URL_PAGE_1='/'
-URL_PAGE_2='/informacie'
-URL_PAGE_3='/potvrdenie'
-
-
 def render_template(response, template_file, template_values):
-    path = os.path.join(os.path.dirname(__file__), template_file)
-    response.out.write(template.render(path, template_values))
+    response.out.write( render_to_string(template_file, template_values))    
+
+def _getKey(handler):
+    key = None
+    keyUrl = handler.request.get('key')
+#     if not keyUrl:
+#         keyUrl = handler.session.get('key')
+        
+    if keyUrl:
+        try:
+            key = ndb.Key( urlsafe = keyUrl )
+            handler.session['key'] = key.urlsafe()
+        except (BaseException):
+            logging.exception('Failed to create key: %s', keyUrl)    
+    else:
+        logging.info('No key in url or session')
     
-class Page1(BaseHandler):
+    return key
 
-    def displayPage(self, form):
-        template_values = {
-            'form': form,
-        }
-        render_template(self.response, 'page1.html', template_values)
+def _getGuest(handler, key):
+    guest = None
+    try:
+        guest = key.get()
+        if not guest:
+            logging.error('Guest is None, key: %s', key.urlsafe())
+        
+    except (BaseException):
+        logging.exception('Failed to get guest, key: %s', key.urlsafe())
+        
+    return guest
+    
+    
+class MainHandler(BaseHandler):
+
+    def displayPage(self, **kwargs):
+        render_template(self.response, 'main.html', kwargs)
+        
+    def displayAnonymPage(self, **kwargs):
+        render_template(self.response, 'anonym.html', kwargs)
         
     def get(self):
-        self.displayPage( Page1Form())
-                         
-    def validateData(self):
-        errors = []
-        errorIds = []
+        key = _getKey(self)
+        if not key:
+            return self.displayAnonymPage()
         
-        return errors, errorIds
-            
-            
-    def post(self):
-#         errors, errorIds = self.validateData()
-        form = Page1Form(data = self.request.params) 
-        if not form.is_valid():
-            self.displayPage( form )
-            return
+        guest = _getGuest(self, key)
+        if not guest:
+            return self.displayAnonymPage()
+        
+        logging.info('GET guest: ' + unicode(guest.firstname) 
+            + ' ' + unicode(guest.lastname  + ' ' + guest.email))   
+        
+        return self.displayPage( 
+            firstname=guest.firstname,
+            accept_link=URL_ACCEPT + '?' + urlencode({'key': key.urlsafe()}), 
+            reject_link=URL_REJECT + '?' + urlencode({'key': key.urlsafe()}),
+        )  
 
-        self.redirect(URL_PAGE_2)
-        
-        
-class Page2(BaseHandler):
 
-    def displayPage(self, params={}, errors=[], errorIds=[]):
-        template_values = {
-            'p': params,
-            'errors': errors,
-            'errorIds': errorIds,
-        }
-        render_template(self.response, 'page2.html', template_values)
-        
+class AcceptHandler(BaseHandler):            
     def get(self):
-        self.displayPage()
-                         
-    def validateData(self):
-        errors = []
-        errorIds = []
-        
-        return errors, errorIds
-            
-            
-    def post(self):
-        errors, errorIds = self.validateData() 
-        if errors:
-            self.displayPage( self.request.params, errors, errorIds )
-            return
-
-        self.redirect(URL_PAGE_3)
+        key = _getKey(self)
+        guest = _getGuest(self, key)
+        guest.attend = 1
+        guest.put()
+        sendConfirmationMail(guest)
+        return self.redirect(URL_CONFIRMATION_ACCEPT)
         
         
-class Page3(BaseHandler):
-
-    def displayPage(self, params={}, errors=[], errorIds=[]):
-        template_values = {
-            'p': params,
-            'errors': errors,
-            'errorIds': errorIds,
-        }
-        render_template(self.response, 'page3.html', template_values)
-  
+class RejectHandler(BaseHandler):
     def get(self):
-        self.displayPage()
-                         
+        key = _getKey(self)
+        guest = _getGuest(self, key)
+        guest.attend = 0
+        guest.put()
+        if defines.MAIL_REJECTION:
+            sendRejectionMail(guest, generateLink(guest))
+        return self.redirect(URL_CONFIRMATION_REJECT)
+
         
-def sendMail(guest):
+class ConfirmationAcceptHandlar(BaseHandler):
+    def get(self):
+        render_template(self.response, 'confirmationAccept.html', {})
+        
+        
+class ConfirmationRejectHandlar(BaseHandler):
+    def get(self):
+        render_template(self.response, 'confirmationReject.html', {})
+                         
+
+class SenderPage(BaseHandler):
+    def get(self):
+        out = '\n'
+        links = []
+        for guest in Guest.query().fetch():
+            link = generateLink(guest)
+            out += unicode( guest.firstname ) + ' ' + unicode( guest.lastname ) + '\n' + \
+                    ' ' + link + '\n';
+            #sendInvitationMail(guest, link)
+            links.append((guest.firstname, guest.lastname, guest.email, link))       
+            
+        logging.info('Links:\n' + out);
+        logging.info('Links machine:\n%s', links);
+        _sendMail(defines.MAIL_FROM, 'peto.kajan@gmail.com', 'Links', unicode(links))
+        self.abort(404)                  
+        
+def generateLink(guest):
+    return defines.DOMAIN + '?key=' + guest.key.urlsafe()
+
+def _sendMail(senderAddress, userAddress, subject, body):
+    try:
+        mail.send_mail(senderAddress, userAddress, subject, body)
+    except (Exception, DeadlineExceededError):
+        logging.exception('Failed to send email %s ', userAddress) 
+            
+def sendInvitationMail(guest, link):
+    logging.info('Sending invitation mail sent to %s', guest.email)
     userAddress = guest.email
-    senderAddress = MAIL_FROM
-    subject = MAIL_SUBJECT
+    senderAddress = defines.MAIL_FROM
+    subject = defines.MAIL_INVITATION_SUBJECT
+    body = defines.MAIL_INVITATION_TEXT.format(name=guest.firstname, link=link)
+    _sendMail(senderAddress, userAddress, subject, body)
+    logging.info('Invitation mail sent successfully')
     
-    body = MAIL_TEXT
+def sendConfirmationMail(guest):
+    logging.info('Sending confirmation mail to %s', guest.email)
+    userAddress = guest.email
+    senderAddress = defines.MAIL_FROM
+    subject = defines.MAIL_CONFIRMATION_SUBJECT
+    body = defines.MAIL_CONFIRMATION_TEXT.format(name=guest.firstname,)
+    _sendMail(senderAddress, userAddress, subject, body)
+    logging.info('Confirmation mail sent successfully')
     
-    mail.send_mail(senderAddress, userAddress, subject, body)
+def sendRejectionMail(guest, link):
+    logging.info('Sending rejection mail to %s', guest.email)
+    userAddress = guest.email
+    senderAddress = defines.MAIL_FROM
+    subject = defines.MAIL_REJECTION_SUBJECT
+    body = defines.MAIL_REJECTION_TEXT.format(name=guest.firstname, link=link)
+    _sendMail(senderAddress, userAddress, subject, body)
+    logging.info('Rejection mail sent successfully')
     
-    
+class TestDataImportPage(BaseHandler):
+    def get(self):
+        persistTestGuests()
+        self.abort(404)
 
-application = webapp2.WSGIApplication([
-        (URL_PAGE_1, Page1),
-        (URL_PAGE_2, Page2),
-        (URL_PAGE_3, Page3),
-    ], config = sessionConfig, debug=True)
+    
+pages = [
+    (URL_MAIN, MainHandler),
+    (URL_CONFIRMATION_ACCEPT, ConfirmationAcceptHandlar),
+    (URL_CONFIRMATION_REJECT, ConfirmationRejectHandlar),
+    (URL_ACCEPT, AcceptHandler),
+    (URL_REJECT, RejectHandler),
+    (URL_PAGE_SENDER, SenderPage),
+    (URL_PAGE_TEST_DATA_IMPORT, TestDataImportPage)]
+    
+application = webapp2.WSGIApplication(pages, config = sessionConfig)
 
 def main():
     # Set the logging level in the main function

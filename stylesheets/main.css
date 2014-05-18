@@ -1,7 +1,6 @@
 body {
-	background-image: url('../images/background.jpg');
+	/*background-image: url('../images/background.jpg');*/
 	background-position: top center;
-	background-color: yellow;
 	background-repeat: no-repeat;
 }
 
