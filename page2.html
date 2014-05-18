@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <title>Info</title>
+	  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  
+  <body class="intro">
+  	<div class="content">
+	    <form action="/informacie" method="post">
+	    
+	      <div class="errorMsg">
+	        {% for error in errors %}
+	            {{error}}<br/>
+	        {% endfor %}
+	      </div>
+	    
+	      <div>      
+		  	<input maxlength="200" type="text" name="udaj1" id="udaj1" {% if 'firstname' in errorIds %} class="error" {% endif%} value="{{p.firstname}}"/>
+	        <label for="fname">Údaj 1</label>
+	        <br>
+	      </div>
+	      
+	      <div>      
+		  	<input maxlength="200" type="text" name="udaj2" id="udaj2" {% if 'firstname' in errorIds %} class="error" {% endif%} value="{{p.firstname}}"/>
+	        <label for="fname">Údaj 2</label>
+	        <br>
+	      </div>
+	      
+	      <input type="submit" val="Prihlásiť sa"/>
+	  	</form>
+	 </div>
+
+  </body>
+</html>

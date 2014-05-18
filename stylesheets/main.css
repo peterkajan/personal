@@ -1,0 +1,16 @@
+body {
+	background-image: url('../images/background.jpg');
+	background-position: top center;
+	background-color: yellow;
+	background-repeat: no-repeat;
+}
+
+.content {
+	width: 500px;
+	margin: 500px auto;
+	background: white;
+}
+
+.errorlist {
+	list-style: none;	
+}

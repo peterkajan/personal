@@ -1,0 +1,147 @@
+[INFO     2014-04-29 08:52:57,837 bulkloader.py] Logging to bulkloader-log-20140429.085257
+[INFO     2014-04-29 08:52:57,837 bulkloader.py] Throttling transfers:
+[INFO     2014-04-29 08:52:57,838 bulkloader.py] Bandwidth: 250000 bytes/second
+[INFO     2014-04-29 08:52:57,838 bulkloader.py] HTTP connections: 8/second
+[INFO     2014-04-29 08:52:57,838 bulkloader.py] Entities inserted/fetched/modified: 20/second
+[INFO     2014-04-29 08:52:57,838 bulkloader.py] Batch Size: 10
+[INFO     2014-04-29 08:52:57,842 bulkloader.py] Opening database: bulkloader-progress-20140429.085257.sql3
+[INFO     2014-04-29 08:52:57,848 bulkloader.py] Opening database: bulkloader-results-20140429.085257.sql3
+[DEBUG    2014-04-29 08:52:57,852 adaptive_thread_pool.py] [WorkerThread-0] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,853 adaptive_thread_pool.py] [WorkerThread-1] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,853 adaptive_thread_pool.py] [WorkerThread-2] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,853 adaptive_thread_pool.py] [WorkerThread-3] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,854 adaptive_thread_pool.py] [WorkerThread-4] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,854 adaptive_thread_pool.py] [WorkerThread-5] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,854 adaptive_thread_pool.py] [WorkerThread-6] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,855 adaptive_thread_pool.py] [WorkerThread-7] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,855 adaptive_thread_pool.py] [WorkerThread-8] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,855 adaptive_thread_pool.py] [WorkerThread-9] WorkerThread: started
+[DEBUG    2014-04-29 08:52:57,856 bulkloader.py] Configuring remote_api. url_path = /_ah/remote_api, servername = htcinvite.appspot.com
+[DEBUG    2014-04-29 08:52:57,870 bulkloader.py] Bulkloader using app_id: s~htcinvite
+[INFO     2014-04-29 08:52:57,871 bulkloader.py] Connecting to htcinvite.appspot.com/_ah/remote_api
+[DEBUG    2014-04-29 08:53:10,705 bulkloader.py] [Thread-11] ExportProgressThread: started
+[DEBUG    2014-04-29 08:53:10,705 bulkloader.py] [Thread-12] DataSourceThread: started
+[INFO     2014-04-29 08:53:10,705 bulkloader.py] Downloading kinds: ['Guest']
+[DEBUG    2014-04-29 08:53:10,714 bulkloader.py] [Thread-12] DataSourceThread: exiting
+[DEBUG    2014-04-29 08:53:10,715 bulkloader.py] Waiting for worker threads to finish...
+[DEBUG    2014-04-29 08:53:10,765 adaptive_thread_pool.py] [WorkerThread-9] Got work item Guest-ASC[None to None]
+[DEBUG    2014-04-29 08:53:11,231 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.010
+[DEBUG    2014-04-29 08:53:11,232 bulkloader.py] Entities transferred total: 10
+[DEBUG    2014-04-29 08:53:11,233 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:11,237 bulkloader.py] [WorkerThread-9] Guest-ASC[None to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:11,237 adaptive_thread_pool.py] Increasing active thread count to 2
+[DEBUG    2014-04-29 08:53:11,238 adaptive_thread_pool.py] [WorkerThread-9] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 4700102971097088L, _app=u's~htcinvite') to None]
+[INFO     2014-04-29 08:53:11,528 bulkloader.py] Guest: No descending index on __key__, performing serial download
+[DEBUG    2014-04-29 08:53:11,975 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.005
+[DEBUG    2014-04-29 08:53:11,975 bulkloader.py] Entities transferred total: 20
+[DEBUG    2014-04-29 08:53:11,979 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:11,983 bulkloader.py] [WorkerThread-9] Guest-ASC(datastore_types.Key.from_path(u'Guest', 4700102971097088L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.7 seconds
+[DEBUG    2014-04-29 08:53:11,983 adaptive_thread_pool.py] Increasing active thread count to 3
+[DEBUG    2014-04-29 08:53:11,983 adaptive_thread_pool.py] [WorkerThread-9] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 4825980946350080L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:12,392 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.006
+[DEBUG    2014-04-29 08:53:12,392 bulkloader.py] Entities transferred total: 30
+[DEBUG    2014-04-29 08:53:12,397 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:12,401 bulkloader.py] [WorkerThread-9] Guest-ASC(datastore_types.Key.from_path(u'Guest', 4825980946350080L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:12,401 adaptive_thread_pool.py] Increasing active thread count to 4
+[DEBUG    2014-04-29 08:53:12,401 adaptive_thread_pool.py] [WorkerThread-9] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 4889511028850688L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:12,732 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.005
+[DEBUG    2014-04-29 08:53:12,732 bulkloader.py] Entities transferred total: 40
+[DEBUG    2014-04-29 08:53:12,733 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:12,737 bulkloader.py] [WorkerThread-9] Guest-ASC(datastore_types.Key.from_path(u'Guest', 4889511028850688L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:12,738 adaptive_thread_pool.py] Increasing active thread count to 5
+[DEBUG    2014-04-29 08:53:12,738 adaptive_thread_pool.py] [WorkerThread-2] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5090120361312256L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:13,166 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.006
+[DEBUG    2014-04-29 08:53:13,166 bulkloader.py] Entities transferred total: 50
+[DEBUG    2014-04-29 08:53:13,170 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:13,174 bulkloader.py] [WorkerThread-2] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5090120361312256L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:13,175 adaptive_thread_pool.py] Increasing active thread count to 6
+[DEBUG    2014-04-29 08:53:13,175 adaptive_thread_pool.py] [WorkerThread-2] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5161210659995648L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:13,503 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.007
+[DEBUG    2014-04-29 08:53:13,504 bulkloader.py] Entities transferred total: 60
+[DEBUG    2014-04-29 08:53:13,506 bulkloader.py] delete: delta=0.001
+[DEBUG    2014-04-29 08:53:13,511 bulkloader.py] [WorkerThread-2] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5161210659995648L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:13,511 adaptive_thread_pool.py] Increasing active thread count to 7
+[DEBUG    2014-04-29 08:53:13,511 adaptive_thread_pool.py] [WorkerThread-4] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5301948148350976L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:13,840 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.005
+[DEBUG    2014-04-29 08:53:13,840 bulkloader.py] Entities transferred total: 70
+[DEBUG    2014-04-29 08:53:13,843 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:13,846 bulkloader.py] [WorkerThread-4] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5301948148350976L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:13,847 adaptive_thread_pool.py] Increasing active thread count to 8
+[DEBUG    2014-04-29 08:53:13,847 adaptive_thread_pool.py] [WorkerThread-4] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5422672162848768L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:14,282 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.007
+[DEBUG    2014-04-29 08:53:14,282 bulkloader.py] Entities transferred total: 80
+[DEBUG    2014-04-29 08:53:14,285 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:14,289 bulkloader.py] [WorkerThread-4] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5422672162848768L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:14,290 adaptive_thread_pool.py] Increasing active thread count to 9
+[DEBUG    2014-04-29 08:53:14,290 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5649050225344512L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:14,620 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.007
+[DEBUG    2014-04-29 08:53:14,621 bulkloader.py] Entities transferred total: 90
+[DEBUG    2014-04-29 08:53:14,623 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:14,628 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5649050225344512L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:14,628 adaptive_thread_pool.py] Increasing active thread count to 10
+[DEBUG    2014-04-29 08:53:14,629 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5710999223009280L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:15,059 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.005
+[DEBUG    2014-04-29 08:53:15,059 bulkloader.py] Entities transferred total: 100
+[DEBUG    2014-04-29 08:53:15,060 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:15,064 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5710999223009280L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:15,065 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5789787713699840L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:15,395 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.007
+[DEBUG    2014-04-29 08:53:15,396 bulkloader.py] Entities transferred total: 110
+[DEBUG    2014-04-29 08:53:15,398 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:15,402 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5789787713699840L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:15,403 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5920749856489472L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:15,835 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.007
+[DEBUG    2014-04-29 08:53:15,835 bulkloader.py] Entities transferred total: 120
+[DEBUG    2014-04-29 08:53:15,837 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:15,842 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5920749856489472L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:15,842 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 5998970337755136L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:16,172 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.007
+[DEBUG    2014-04-29 08:53:16,172 bulkloader.py] Entities transferred total: 130
+[DEBUG    2014-04-29 08:53:16,176 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:16,180 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 5998970337755136L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:16,181 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 6212000178765824L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:16,508 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.005
+[DEBUG    2014-04-29 08:53:16,509 bulkloader.py] Entities transferred total: 140
+[DEBUG    2014-04-29 08:53:16,511 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:16,515 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 6212000178765824L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:16,516 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 6282368922943488L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:16,952 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.005
+[DEBUG    2014-04-29 08:53:16,953 bulkloader.py] Entities transferred total: 150
+[DEBUG    2014-04-29 08:53:16,955 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:16,959 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 6282368922943488L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.4 seconds
+[DEBUG    2014-04-29 08:53:16,960 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 6483699809910784L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:17,340 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.006
+[DEBUG    2014-04-29 08:53:17,340 bulkloader.py] Entities transferred total: 160
+[DEBUG    2014-04-29 08:53:17,343 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:17,347 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 6483699809910784L, _app=u's~htcinvite') to None] Transferred 10 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:17,348 adaptive_thread_pool.py] [WorkerThread-7] Got work item Guest-DESC(datastore_types.Key.from_path(u'Guest', 6624437298266112L, _app=u's~htcinvite') to None]
+[DEBUG    2014-04-29 08:53:17,673 bulkloader.py] bulkloader-results-20140429.085257.sql3 insert: delta=0.002
+[DEBUG    2014-04-29 08:53:17,673 bulkloader.py] Entities transferred total: 163
+[DEBUG    2014-04-29 08:53:17,674 bulkloader.py] delete: delta=0.000
+[DEBUG    2014-04-29 08:53:17,675 bulkloader.py] [WorkerThread-7] Guest-ASC(datastore_types.Key.from_path(u'Guest', 6624437298266112L, _app=u's~htcinvite') to None] Transferred 3 entities in 0.3 seconds
+[DEBUG    2014-04-29 08:53:17,730 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,730 adaptive_thread_pool.py] [WorkerThread-8] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,730 adaptive_thread_pool.py] [WorkerThread-4] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,730 adaptive_thread_pool.py] [WorkerThread-5] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,731 adaptive_thread_pool.py] [WorkerThread-3] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,731 adaptive_thread_pool.py] [WorkerThread-6] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,731 adaptive_thread_pool.py] [WorkerThread-9] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,732 adaptive_thread_pool.py] [WorkerThread-1] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,735 adaptive_thread_pool.py] [WorkerThread-2] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,744 adaptive_thread_pool.py] [WorkerThread-7] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,769 adaptive_thread_pool.py] [WorkerThread-0] WorkerThread: exiting
+[DEBUG    2014-04-29 08:53:17,769 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,769 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,770 adaptive_thread_pool.py] Waiting for Anonymous_WorkerThread to exit
+[DEBUG    2014-04-29 08:53:17,771 bulkloader.py] Waiting for progress_thread to terminate...
+[DEBUG    2014-04-29 08:53:17,796 bulkloader.py] [Thread-11] ExportProgressThread: exiting
+[DEBUG    2014-04-29 08:53:17,812 bulkloader.py] ... done.
+[DEBUG    2014-04-29 08:53:17,813 bulkloader.py] Export complete, writing to file
+[INFO     2014-04-29 08:53:18,010 bulkloader.py] Have 163 entities, 0 previously transferred
+[INFO     2014-04-29 08:53:18,010 bulkloader.py] 163 entities (55106 bytes) transferred in 20.2 seconds

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Úvod</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+
+    <div class="content">
+      <form action="/" method="post">
+
+        <!-- <div class="errorMsg">
+          {{form.nonfield_errors}}
+        </div> -->
+        
+        {% autoescape off %} 
+        
+        {{ form.as_p|safe }}
+        {% endautoescape %}
+
+        <!-- <div>
+          <input maxlength="200" type="text" name="firstname" id="fname" {% if 'firstname' in errorIds %} class="error" {% endif%} value="{{form.fields.id_num.value}}"/>
+          <label for="fname">Identifikačné číslo</label>
+          <br>
+        </div> -->
+
+        <input type="submit" val="Pokračovať"/>
+      </form>
+    </div>
+
+  </body>
+</html>
