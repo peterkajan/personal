@@ -14,6 +14,17 @@ Prosíme o potvrdenie Vašej účati najneskôr do 25. apríla 2014.
 Vaše HTC
 """
 
+MAIL_INVITATION_HTML = u"""
+Dobrý deň, {name},<br/>
+pozývame Vás na slávnostné predstavenie nového HTC One (M8), ktoré sa uskutoční v utorok 29. apríla 2014 v reštaurácii Flow McRoy Lounge Eurovea. Začíname o 19:00.<br/>
+RSVP: <a href=\"{link}\"> RSVP </a><br/>
+Pozvánka platí pre jednu osobu.<br/>
+Prosíme o potvrdenie Vašej účati najneskôr do 25. apríla 2014. <br/>
+Ďakujeme.<br/>
+Vaše HTC<br/>
+"""
+
+
 MAIL_CONFIRMATION_SUBJECT = u'Potvrdenie účasti na predstavení HTC One (M8)'
 MAIL_CONFIRMATION_TEXT = u"""
 Dobrý deň, {name},
@@ -21,6 +32,14 @@ Dobrý deň, {name},
 Tešíme sa na Vás v utorok 29. apríla v reštaurácii Flow McRoy Lounge Eurovea o 19:00.
 S pozdravom,
 Vaše HTC
+"""
+
+MAIL_CONFIRMATION_HTML = u"""
+Dobrý deň, {name},<br/>
+ďakujeme za potvrdenie Vašej účasti na predstavení nového HTC One (M8). <br/>
+Tešíme sa na Vás v utorok 29. apríla v reštaurácii Flow McRoy Lounge Eurovea o 19:00.<br/>
+S pozdravom,<br/>
+Vaše HTC<br/>
 """
 
 MAIL_REJECTION = True
